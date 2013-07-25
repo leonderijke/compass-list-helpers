@@ -1,0 +1,20 @@
+// Some function tests
+// ===================
+
+@include test-module('Some function') {
+
+	@include test('[function] some') {
+		$numbers: 1, 2, 3, 4;
+
+		// All numbers are true
+		$assert: some($numbers, 'is-it-positive');
+		@include assert-true($assert,
+			'At least one item should be true');
+
+		// Numbers aren't blue
+		$assert: some($numbers, 'is-it-blue');
+		@include assert-false($assert,
+			'All least one item should be false');
+	}
+
+}

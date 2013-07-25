@@ -1,0 +1,25 @@
+// Filter function tests
+// =====================
+
+@include test-module('Filter function') {
+
+	@include test('[function] filter') {
+		$colors: red, green, blue, blue;
+
+		// Two colors are blue
+		$assert: filter($colors, 'is-it-blue');
+		$expect: blue blue;
+		@include assert-equal($assert, $expect,
+			'Two items should be returned');
+
+		// No color is blue
+		$colors: red, green, yellow;
+		// Comparing the length of the returned list, because an ampty list
+		// isn't a valid CSS value
+		$assert: length(filter($colors, 'is-it-blue'));
+		$expect: 0;
+		@include assert-equal($assert, $expect,
+			'An empty list should be returned');
+	}
+
+}

@@ -1,0 +1,74 @@
+// Test functions
+// ==============
+
+// Color functions
+// ---------------
+
+@function is-it-blue($item) {
+	@if $item == blue {
+		@return true;
+	}
+	@return false;
+}
+
+// Number functions
+// ----------------
+
+@function add-it($a, $b) {
+	@return $a + $b;
+}
+
+@function double-up($a) {
+	@return $a * 2;
+}
+
+@function is-it-positive($item) {
+	@if $item > 0 {
+		@return true;
+	}
+	@return false;
+}
+
+
+// List functions
+// --------------
+@function flatten-it($a, $b) {
+	@if type-of($b) != list {
+		$b: join((), $b);
+	}
+	@return join($a, $b);
+}
+
+// Misc. functions
+// ---------------
+
+// Poor man's `call` function, until the native `call` function is implemented
+@function call($function, $arguments...) {
+	@if $function == 'darken-it' {
+		@return darken-it($arguments...);
+	}
+	@if $function == 'lighten-it' {
+		@return lighten-it($arguments...);
+	}
+	@if $function == 'is-it-blue' {
+		@return is-it-blue($arguments...);
+	}
+	@if $function == 'true-it' {
+		@return true-it($arguments...);
+	}
+	@if $function == 'false-it' {
+		@return false-it($arguments...);
+	}
+	@if $function == 'add-it' {
+		@return add-it($arguments...);
+	}
+	@if $function == 'double-up' {
+		@return double-up($arguments...);
+	}
+	@if $function == 'is-it-positive' {
+		@return is-it-positive($arguments...);
+	}
+	@if $function == 'flatten-it' {
+		@return flatten-it($arguments...);
+	}
+}

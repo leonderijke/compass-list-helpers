@@ -1,0 +1,21 @@
+// Function reduce
+// Apply a function against an accumulator and each item of the list
+// (from left-to-right) as to reduce it to a single value.
+//
+// Reduce executes the callback function once for each item present in the
+// list, passing it the result up until then and the current item in the list.
+//
+// @param $list {list} List of items
+// @param $callback {string} Name of the function to test for each item
+// @param $initial {literal} Value to use as the first argument to the first
+//							 call of the callback
+//
+// @return {list} The filtered list
+//
+@function reduce($list, $callback, $initial: 0) {
+	$result: $initial;
+	@for $i from 1 through length($list) {
+		$result: call($callback, $result, nth($list, $i));
+	}
+	@return $result;
+}

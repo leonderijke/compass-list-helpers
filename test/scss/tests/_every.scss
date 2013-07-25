@@ -1,0 +1,20 @@
+// Every function tests
+// ====================
+
+@include test-module('Every function') {
+
+	@include test('[function] every') {
+		$numbers: 1, 2, 3, 4;
+
+		// All numbers are true
+		$assert: every($numbers, 'is-it-positive');
+		@include assert-true($assert,
+			'All items should be true');
+
+		// Numbers aren't blue
+		$assert: every($numbers, 'is-it-blue');
+		@include assert-false($assert,
+			'All items should be false');
+	}
+
+}

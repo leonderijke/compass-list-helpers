@@ -1,0 +1,21 @@
+// Function some
+// Tests whether some item in the list passes the test implemented by the
+// provided callback function.
+//
+// Some executes the callback function once for each item present in the list
+// until it finds one where callback returns a true value. If such an item is
+// found, some immediately returns true. Otherwise, some returns false.
+//
+// @param $list {list} List of items
+// @param $callback {string} Name of the function to test for each item
+//
+// @return {boolean} Whether some item in the list passes the test
+//
+@function some($list, $callback) {
+	@each $item in $list {
+		@if call($callback, $item) == true {
+			@return true;
+		}
+	}
+	@return false;
+}

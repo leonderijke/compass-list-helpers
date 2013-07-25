@@ -1,0 +1,15 @@
+/* List Helpers Tests */
+/* ------------------ */
+
+@import "true";
+@import "list-helpers";
+
+// Test functions
+@import "functions";
+
+// List Helpers unit tests
+@import "tests/every";
+@import "tests/filter";
+@import "tests/map";
+@import "tests/reduce";
+@import "tests/some";

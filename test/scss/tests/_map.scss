@@ -1,0 +1,17 @@
+// Map function tests
+// ==================
+
+@include test-module('Map function') {
+
+	@include test('[function] map') {
+		$numbers: 1, 2, 3;
+
+		// Double the numbers
+		$assert: map($numbers, 'double-up');
+		$expect: 2 4 6;
+		@include assert-equal($assert, $expect,
+			'Doubled items should be returned');
+
+	}
+
+}

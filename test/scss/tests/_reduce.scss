@@ -1,0 +1,31 @@
+// Reduce function tests
+// =====================
+
+@include test-module('Reduce function') {
+
+	@include test('[function] reduce') {
+		$numbers: 1, 2, 3, 4;
+		$list: 1 2 3, 4 5 6, 7 8 9;
+		$mixed: 1 2 3, four, five, six, 7 8 9;
+
+		// Add numbers
+		$assert: reduce($numbers, 'add-it');
+		$expect: 10;
+		@include assert-equal($assert, $expect,
+			'Total should be 10');
+
+		// Flatten list, pass an empty list as initial value
+		$assert: reduce($list, 'flatten-it', ());
+		$expect: 1 2 3 4 5 6 7 8 9;
+		@include assert-equal($assert, $expect,
+			'List should be flattened');
+
+		// Mixed lists, pass an empty list as initial value
+		$assert: reduce($mixed, 'flatten-it', ());
+		$expect: 1 2 3 four five six 7 8 9;
+		@include assert-equal($assert, $expect,
+			'List should be flattened');
+
+	}
+
+}

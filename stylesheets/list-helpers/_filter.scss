@@ -1,0 +1,22 @@
+// Function filter
+// Creates a new list with all items that pass the test implemented by the
+// provided function.
+//
+// Filter calls a provided callback function once for each item in a list, and
+// constructs a new list of all the values for which callback returns true.
+//
+// @param $list {list} List of items
+// @param $callback {string} Name of the function to test for each item
+//
+// @return {list} The filtered list
+//
+@function filter($list, $callback) {
+	$new-list: ();
+	@each $item in $list {
+		$result: call($callback, $item);
+		@if $result == true {
+			$new-list: append($new-list, $item);
+		}
+	}
+	@return $new-list;
+}

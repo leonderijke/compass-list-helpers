@@ -1,0 +1,21 @@
+// Function map
+// Creates a new list with the results of calling a provided function on every
+// item in this list.
+//
+// Map calls a provided callback function once for each item in a list,
+// in order, and constructs a new list from the results.
+//
+// @param $list {list} List of items
+// @param $callback {string} Name of the function that produces an item of the
+//							 new list from an item of the current one.
+//
+// @return {list} The new list
+//
+@function map($list, $callback) {
+	$new-list: ();
+	@each $item in $list {
+		$item: call($callback, $item);
+		$new-list: append($new-list, $item);
+	}
+	@return $new-list;
+}

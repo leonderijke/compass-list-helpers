@@ -1,0 +1,22 @@
+// Function every
+// Tests whether all items in the list pass the test implemented by the
+// provided callback function.
+//
+// Every executes the provided callback function once for each item present in
+// the list until it finds one where callback returns false. If such an item is
+// found, the every method immediately returns false. Otherwise, if callback
+// returned a true value for all items, every will return true.
+//
+// @param $list {list} List of items
+// @param $callback {string} Name of the function to test for each item
+//
+// @return {boolean} Whether all items in the list pass the test
+//
+@function every($list, $callback) {
+	@each $item in $list {
+		@if call($callback, $item) == false {
+			@return false;
+		}
+	}
+	@return true;
+}
